@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class CutieData : MonoBehaviour
 {
+    [HideInInspector] public string Name;
+
     [HideInInspector] public string Introduction;
 
     [HideInInspector] public string NameOpinionPositive;

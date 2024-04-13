@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameBehavior : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameBehavior : MonoBehaviour
     {
         Start,
         Running,
+        Focused,
         Paused,
         GameOver
     }
@@ -40,6 +42,21 @@ public class GameBehavior : MonoBehaviour
                     if (_pauseMenu.activeSelf == true)
                         _pauseMenu.SetActive(false);
 
+                    if (_dialogueBox.activeSelf == true)
+                        _dialogueBox.SetActive(false);
+
+                    if(_as.clip != _gameLoop)
+                    {
+                        _as.Stop();
+                        _as.clip = _gameLoop;
+                        _as.Play();
+                    }
+
+                    break;
+
+                case GameState.Focused:
+
+                    _dialogueBox.SetActive(true);
                     break;
 
                 case GameState.Paused:
@@ -57,8 +74,16 @@ public class GameBehavior : MonoBehaviour
 
     [SerializeField] GameObject _startMenu;
     [SerializeField] GameObject _pauseMenu;
+    [SerializeField] GameObject _dialogueBox;
+    public TextMeshProUGUI DialogueText;
+    public TextMeshProUGUI NameText;
 
     public Vector3 MainCameraPosition;
+
+    [SerializeField] AudioSource _as;
+    [SerializeField] AudioClip _startLoop;
+    [SerializeField] AudioClip _gameLoop;
+    [SerializeField] AudioClip _transition;
 
     void Awake()
     {
@@ -95,7 +120,12 @@ public class GameBehavior : MonoBehaviour
             case GameState.Paused:
 
                 if (Input.GetKeyDown(KeyCode.Escape))
-                    CurrentState = GameState.Running;
+                {
+                    if(_dialogueBox.activeSelf)
+                        CurrentState = GameState.Focused;
+                    else
+                        CurrentState = GameState.Running;
+                }
 
                 break;
 

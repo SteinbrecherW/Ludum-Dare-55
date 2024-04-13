@@ -6,6 +6,8 @@ public class FrothyData : CutieData
 {
     void Start()
     {
+        Name = "Frothy";
+
         Introduction = "HI! I'M FROTHY, TEE-HEE!";
 
         NameOpinionPositive = "I LOVE THAT NAME SO SO SO MUCH! WHAT A GREAT NAME!";

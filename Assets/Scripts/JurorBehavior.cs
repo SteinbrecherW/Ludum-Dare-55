@@ -10,38 +10,41 @@ public class JurorBehavior : MonoBehaviour
 
     public CutieData JurorData;
 
-    //void Start()
-    //{
-        
-    //}
-
     //void Update()
     //{
-        
+    //    if(GameBehavior.Instance.CurrentState == GameBehavior.GameState.Focused)
+    //    {
+
+    //    }
     //}
 
     private void OnMouseDown()
     {
-        if (GameBehavior.Instance.CurrentState == GameBehavior.GameState.Running)
+        if (GameBehavior.Instance.CurrentState == GameBehavior.GameState.Running ||
+            GameBehavior.Instance.CurrentState == GameBehavior.GameState.Focused)
         {
             if (!_highlighted)
             {
                 Camera.main.transform.position = new Vector3(
                     transform.position.x,
-                    transform.position.y,
+                    transform.position.y - 0.5f,
                     transform.position.z - 5
                 );
 
                 _highlighted = true;
+
+                GameBehavior.Instance.NameText.text = JurorData.Name;
+                GameBehavior.Instance.DialogueText.text = JurorData.Introduction;
+
+                GameBehavior.Instance.CurrentState = GameBehavior.GameState.Focused;
             }
             else
             {
-                if (GameBehavior.Instance.CurrentState == GameBehavior.GameState.Running)
-                {
-                    Camera.main.transform.position = GameBehavior.Instance.MainCameraPosition;
-                }
+                Camera.main.transform.position = GameBehavior.Instance.MainCameraPosition;
 
                 _highlighted = false;
+
+                GameBehavior.Instance.CurrentState = GameBehavior.GameState.Running;
             }
         }
     }

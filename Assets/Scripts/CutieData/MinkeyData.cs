@@ -6,6 +6,8 @@ public class MinkeyData : CutieData
 {
     void Start()
     {
+        Name = "Minkey";
+
         Introduction = "Hello-ho-ho.";
 
         NameOpinionPositive = "Good name, good name. Oh-ho-ho.";

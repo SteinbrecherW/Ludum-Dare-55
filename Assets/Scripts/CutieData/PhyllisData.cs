@@ -6,6 +6,8 @@ public class PhyllisData : CutieData
 {
     void Start()
     {
+        Name = "Phyllis";
+
         Introduction = "He. Llo!";
 
         NameOpinionPositive = "Tha. Tnam. Eisgood!";

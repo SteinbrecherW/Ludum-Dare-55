@@ -6,6 +6,8 @@ public class SlimData : CutieData
 {
     void Start()
     {
+        Name = "Slim Sparklez";
+
         Introduction = "Yo yo.";
 
         NameOpinionPositive = "That name's slick, b.";

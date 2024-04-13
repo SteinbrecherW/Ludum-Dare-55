@@ -6,6 +6,8 @@ public class BeeboData : CutieData
 {
     void Start()
     {
+        Name = "Beebo AI";
+
         Introduction = "HELLO. I AM BEEBO AI.";
 
         NameOpinionPositive = "OVER 0.01% OF THE POPULATION SHARES THAT NAME. VERY GOOD.";

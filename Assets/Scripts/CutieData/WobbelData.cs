@@ -6,6 +6,8 @@ public class WobbelData : CutieData
 {
     void Start()
     {
+        Name = "Wobbel and Bobbel";
+
         Introduction = "Oh, um, hi. Um, I - um.";
 
         NameOpinionPositive = "Yeah, that's, um - It's good. Bobbel says so.";

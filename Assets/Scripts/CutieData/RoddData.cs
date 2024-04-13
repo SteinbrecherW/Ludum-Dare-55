@@ -6,6 +6,8 @@ public class RoddData : CutieData
 {
     void Start()
     {
+        Name = "Rodd, Todd, Maud, Plod, and Bodd";
+
         Introduction = "HI! We're so happy to meet you!";
 
         NameOpinionPositive = "We like that name! Especially Rodd!";

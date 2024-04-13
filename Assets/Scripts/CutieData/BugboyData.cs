@@ -6,6 +6,8 @@ public class BugboyData : CutieData
 {
     void Start()
     {
+        Name = "Bugbee";
+
         Introduction = "Hmph.";
 
         NameOpinionPositive = "Good name. Hmph.";

@@ -6,6 +6,8 @@ public class QuibbyData : CutieData
 {
     void Start()
     {
+        Name = "Quibby";
+
         Introduction = "Heeey guurrll! I'm Quibby.";
 
         NameOpinionPositive = "That name is SO YOU! I can't get enough!";

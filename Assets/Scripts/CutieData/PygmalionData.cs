@@ -6,6 +6,8 @@ public class PygmalionData : CutieData
 {
     void Start()
     {
+        Name = "Pygmalion";
+
         Introduction = "I'm Pygmalion. Do you have any drugs?";
 
         NameOpinionPositive = "Name's good. I can give you good money.";
