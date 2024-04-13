@@ -31,6 +31,9 @@ public class GameBehavior : MonoBehaviour
 
                 case GameState.Running:
 
+                    if (!CutieBehavior.Instance.IsInstantiated)
+                        CutieBehavior.Instance.InstantiateJurors();
+
                     if (_startMenu.activeSelf == true)
                         _startMenu.SetActive(false);
 
@@ -55,6 +58,8 @@ public class GameBehavior : MonoBehaviour
     [SerializeField] GameObject _startMenu;
     [SerializeField] GameObject _pauseMenu;
 
+    public Vector3 MainCameraPosition;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -66,6 +71,7 @@ public class GameBehavior : MonoBehaviour
     void Start()
     {
         CurrentState = GameState.Start;
+        MainCameraPosition = Camera.main.transform.position;
     }
 
     void Update()
