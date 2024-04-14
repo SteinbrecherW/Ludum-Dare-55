@@ -6,14 +6,17 @@ public class CutieBehavior : MonoBehaviour
 {
     public static CutieBehavior Instance;
 
-    public bool IsInstantiated = false;
+    public JurorBehavior HighlightedJuror;
 
+    public bool IsInstantiated = false;
+    public bool OpinionsPopulated = false;
     public bool IsRoundOne = true;
+
+    int _disappearCount = 0;
 
     public List<GameObject> Cuties;
     List<JurorBehavior> _currentCuties;
-
-    MeshRenderer[] _cutieMeshes;
+    JurorBehavior[] _finalJurors = new JurorBehavior[12];
 
     public Transform[] JurorSeats;
 
@@ -29,6 +32,7 @@ public class CutieBehavior : MonoBehaviour
     List<int> _politicalOpinions = new List<int>();
 
     IEnumerator InstantCuties;
+    IEnumerator RemoveCuties;
 
     private void Awake()
     {
@@ -41,18 +45,10 @@ public class CutieBehavior : MonoBehaviour
     void Start()
     {
         _currentCuties = new List<JurorBehavior>();
-        _cutieMeshes = new MeshRenderer[8];
 
         InstantCuties = InstantiateCuties();
+        RemoveCuties = RetireCuties();
     }
-
-    //void Update()
-    //{
-    //    if (GameBehavior.Instance.CurrentState == GameBehavior.GameState.Running)
-    //    {
-
-    //    }
-    //}
 
     public void PopulateJurorOpinions()
     {
@@ -99,6 +95,8 @@ public class CutieBehavior : MonoBehaviour
             _currentCuties[i - 1].PoliticsOpinion = _politicalOpinions[rng];
             _politicalOpinions.RemoveAt(rng);
         }
+
+        OpinionsPopulated = true;
     }
 
     public void InstantiateJurors()
@@ -106,6 +104,29 @@ public class CutieBehavior : MonoBehaviour
         IsInstantiated = true;
 
         StartCoroutine(InstantCuties);
+    }
+
+    public void RemoveJurors()
+    {
+        IsInstantiated = false;
+
+        StartCoroutine(RemoveCuties);
+    }
+
+    public void MakeHighlightedJurorDisappear()
+    {
+        _currentCuties.Remove(HighlightedJuror);
+
+        HighlightedJuror.MakeDisappear();
+
+        HighlightedJuror = null;
+
+        Camera.main.transform.position = GameBehavior.Instance.MainCameraPosition;
+        GameBehavior.Instance.CurrentState = GameBehavior.GameState.Running;
+
+        _disappearCount++;
+        if(_disappearCount >= 2)
+            GameBehavior.Instance.CurrentState = GameBehavior.GameState.PostTransition;
     }
 
     IEnumerator InstantiateCuties()
@@ -119,14 +140,35 @@ public class CutieBehavior : MonoBehaviour
                 JurorSeats[i]
             ).GetComponent<JurorBehavior>());
 
-            _cutieMeshes[i] = _currentCuties[i].GetComponent<MeshRenderer>();
-            _cutieMeshes[i].material.color = new Color(0, 0, 0, 0);
-
             Cuties.RemoveAt(rng);
 
             yield return new WaitForSeconds(0.66f);
         }
 
         GameBehavior.Instance.CurrentState = GameBehavior.GameState.Running;
+    }
+
+    IEnumerator RetireCuties()
+    {
+        for (int i = 6; i > 0; i--)
+        {
+            yield return new WaitForSeconds(0.66f);
+
+            _finalJurors[i - 1] = _currentCuties[i - 1];
+
+            _currentCuties[i - 1].MakeDisappear();
+
+            _currentCuties.RemoveAt(i - 1);
+        }
+
+        if (IsRoundOne)
+        {
+            IsRoundOne = false;
+            GameBehavior.Instance.CurrentState = GameBehavior.GameState.PreTransition;
+        }
+        else
+        {
+            GameBehavior.Instance.CurrentState = GameBehavior.GameState.GameOver;
+        }
     }
 }

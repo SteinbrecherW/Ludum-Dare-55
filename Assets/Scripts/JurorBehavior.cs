@@ -23,6 +23,8 @@ public class JurorBehavior : MonoBehaviour
     public int TVOpinion = 0;
     public int PoliticsOpinion = 0;
 
+    IEnumerator _disappearCoroutine;
+
     private void Start()
     {
         _anim = GetComponent<Animator>();
@@ -35,6 +37,8 @@ public class JurorBehavior : MonoBehaviour
                     transform.position.z - 5
             )
         ;
+
+        _disappearCoroutine = Disappear();
     }
 
     void Update()
@@ -42,14 +46,23 @@ public class JurorBehavior : MonoBehaviour
         if (GameBehavior.Instance.CurrentState == GameBehavior.GameState.Focused)
         {
             if (_highlighted && Camera.main.transform.position != _highlightedCameraPosition)
+            {
+                CutieBehavior.Instance.HighlightedJuror = null;
                 _highlighted = false;
+            }
         }
+    }
+
+    public void MakeDisappear()
+    {
+        StartCoroutine(_disappearCoroutine);
     }
 
     private void OnMouseDown()
     {
-        if (GameBehavior.Instance.CurrentState == GameBehavior.GameState.Running ||
-            GameBehavior.Instance.CurrentState == GameBehavior.GameState.Focused)
+        if ((GameBehavior.Instance.CurrentState == GameBehavior.GameState.Running ||
+            GameBehavior.Instance.CurrentState == GameBehavior.GameState.Focused) &&
+            CutieBehavior.Instance.HighlightedJuror == null)
         {
             if (!_highlighted)
             {
@@ -60,6 +73,8 @@ public class JurorBehavior : MonoBehaviour
                 GameBehavior.Instance.NameText.text = JurorData.Name;
                 GameBehavior.Instance.DialogueText.text = JurorData.Introduction;
 
+                CutieBehavior.Instance.HighlightedJuror = this;
+
                 GameBehavior.Instance.CurrentState = GameBehavior.GameState.Focused;
             }
             else
@@ -68,8 +83,20 @@ public class JurorBehavior : MonoBehaviour
 
                 _highlighted = false;
 
+                CutieBehavior.Instance.HighlightedJuror = null;
+
                 GameBehavior.Instance.CurrentState = GameBehavior.GameState.Running;
             }
         }
+    }
+
+    IEnumerator Disappear()
+    {
+        _anim = GetComponent<Animator>();
+        _anim.Play("Base Layer.MakeDisappear", 0, 0);
+
+        yield return new WaitForSeconds(0.66f);
+
+        Destroy(this);
     }
 }

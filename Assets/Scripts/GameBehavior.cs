@@ -14,6 +14,7 @@ public class GameBehavior : MonoBehaviour
         PreTransition,
         Running,
         Focused,
+        PostTransition,
         Paused,
         GameOver
     }
@@ -53,6 +54,8 @@ public class GameBehavior : MonoBehaviour
                 case GameState.PreTransition:
 
                     _as.Stop();
+                    _as.pitch = 1;
+                    _as.time = 0;
                     _as.PlayOneShot(_transition);
                     CutieBehavior.Instance.InstantiateJurors();
 
@@ -82,7 +85,8 @@ public class GameBehavior : MonoBehaviour
                     if (_newspaper.activeSelf == true)
                         _newspaper.SetActive(false);
 
-                    CutieBehavior.Instance.PopulateJurorOpinions();
+                    if(!CutieBehavior.Instance.OpinionsPopulated)
+                        CutieBehavior.Instance.PopulateJurorOpinions();
 
                     if (_as.clip != _gameLoop)
                     {
@@ -100,6 +104,25 @@ public class GameBehavior : MonoBehaviour
 
                     if (_questionUI.activeSelf == false)
                         _questionUI.SetActive(true);
+
+                    break;
+
+                case GameState.PostTransition:
+
+                    _as.Stop();
+                    _as.loop = true;
+                    _as.pitch = -1f;
+                    _as.time = 4f;
+                    _as.clip = _transition;
+                    _as.Play();
+                    CutieBehavior.Instance.RemoveJurors();
+
+                    NameText.text = "Judge";
+                    DialogueText.text = "JURY DISMISSED!";
+                    _dialogueBox.SetActive(true);
+
+                    if (_questionUI.activeSelf == true)
+                        _questionUI.SetActive(false);
 
                     break;
 
