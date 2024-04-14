@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameBehavior : MonoBehaviour
@@ -15,8 +16,10 @@ public class GameBehavior : MonoBehaviour
         Running,
         Focused,
         PostTransition,
+        FinalTransition,
         Paused,
-        GameOver
+        GameOver,
+        Finale
     }
 
     GameState _currentState;
@@ -132,7 +135,47 @@ public class GameBehavior : MonoBehaviour
 
                     break;
 
+                case GameState.FinalTransition:
+                    
+                    Camera.main.transform.SetPositionAndRotation(
+                        EndCameraPosition,
+                        Quaternion.Euler(15, -16, 0)
+                    );
+
+                    _as.Stop();
+                    _as.pitch = 1;
+                    _as.time = 0;
+                    _as.PlayOneShot(_transition);
+                    CutieBehavior.Instance.StartFinalJudgement();
+
+                    NameText.text = "Judge";
+                    DialogueText.text = "The jury is done deliberating...";
+                    _dialogueBox.SetActive(true);
+
+                    if (_questionUI.activeSelf == true)
+                        _questionUI.SetActive(false);
+
+                    break;
+
                 case GameState.GameOver:
+
+                    DialogueText.text = "What's your decision?";
+
+                    StartCoroutine(_finalCoroutine);
+
+                    break;
+
+                case GameState.Finale:
+
+                    _as.Stop();
+                    _as.loop = true;
+                    _as.clip = _endLoop;
+                    _as.Play();
+
+                    NameText.text = "";
+
+                    _gameOverMenu.SetActive(true);
+
                     break;
             }
             _currentState = value;
@@ -145,6 +188,7 @@ public class GameBehavior : MonoBehaviour
     [SerializeField] GameObject _newspaper;
     [SerializeField] GameObject _clipboard;
     [SerializeField] GameObject _questionUI;
+    [SerializeField] GameObject _gameOverMenu;
 
     public TextMeshProUGUI DialogueText;
     public TextMeshProUGUI NameText;
@@ -161,12 +205,24 @@ public class GameBehavior : MonoBehaviour
     public TextMeshProUGUI TVText;
     public TextMeshProUGUI PoliticsText;
 
+    public TextMeshProUGUI GameOverText;
+
     public Vector3 MainCameraPosition;
+    public Vector3 EndCameraPosition;
+
+    //15, -16, 0
+
+    IEnumerator _finalCoroutine;
+    public int FinalSum;
 
     [SerializeField] AudioSource _as;
     [SerializeField] AudioClip _startLoop;
     [SerializeField] AudioClip _gameLoop;
+    [SerializeField] AudioClip _endLoop;
     [SerializeField] AudioClip _transition;
+    [SerializeField] AudioClip _swell;
+    [SerializeField] AudioClip _win;
+    [SerializeField] AudioClip _lose;
 
     void Awake()
     {
@@ -180,6 +236,7 @@ public class GameBehavior : MonoBehaviour
     {
         CurrentState = GameState.Start;
         MainCameraPosition = Camera.main.transform.position;
+        _finalCoroutine = EndGame();
     }
 
     void Update()
@@ -213,9 +270,6 @@ public class GameBehavior : MonoBehaviour
                 }
                 break;
 
-            case GameState.PreTransition:
-                break;
-
             case GameState.Running:
 
                 if (Input.GetKeyDown(KeyCode.Escape))
@@ -235,8 +289,41 @@ public class GameBehavior : MonoBehaviour
 
                 break;
 
-            case GameState.GameOver:
+            case GameState.Finale:
+                if (Input.GetKeyDown(KeyCode.R))
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
         }
+    }
+
+    IEnumerator EndGame()
+    {
+        _as.PlayOneShot(_swell);
+
+        yield return new WaitForSeconds(4f);
+
+        NameText.text = "Foreman";
+
+        if (FinalSum > 0)
+        {
+            _as.PlayOneShot(_win);
+            DialogueText.text = "Innocent!";
+            GameOverText.text = "You Won!";
+        }
+        else if(FinalSum == 0)
+        {
+            _as.PlayOneShot(_lose);
+            DialogueText.text = "Mistrial.";
+            GameOverText.text = "It's a draw.";
+        }
+        else
+        {
+            _as.PlayOneShot(_lose);
+            DialogueText.text = "Guilty!";
+            GameOverText.text = "You Lost.";
+        }
+
+        yield return new WaitForSeconds(3f);
+        CurrentState = GameState.Finale;
     }
 }

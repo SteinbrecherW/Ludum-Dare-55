@@ -19,6 +19,7 @@ public class CutieBehavior : MonoBehaviour
     JurorBehavior[] _finalJurors = new JurorBehavior[12];
 
     public Transform[] JurorSeats;
+    public Transform[] FinalSeats;
 
     [SerializeField] List<int> _opinionWeights;
 
@@ -33,6 +34,7 @@ public class CutieBehavior : MonoBehaviour
 
     IEnumerator InstantCuties;
     IEnumerator RemoveCuties;
+    IEnumerator FinalJudge;
 
     private void Awake()
     {
@@ -45,9 +47,7 @@ public class CutieBehavior : MonoBehaviour
     void Start()
     {
         _currentCuties = new List<JurorBehavior>();
-
-        InstantCuties = InstantiateCuties();
-        RemoveCuties = RetireCuties();
+        FinalJudge = FinalJudgement();
     }
 
     public void PopulateJurorOpinions()
@@ -61,39 +61,51 @@ public class CutieBehavior : MonoBehaviour
         _tvOpinions.AddRange(_opinionWeights);
         _politicalOpinions.AddRange(_opinionWeights);
 
+        int crimeIndex = DefendantBehavior.Instance.CrimeIndex;
+
         for (int i = 8; i > 0; i--)
         {
             int rng = Random.Range(0, i);
-            _currentCuties[i - 1].NameOpinion = _nameOpinions[rng];
+            _currentCuties[i - 1].NameOpinion = crimeIndex == 3 ? _nameOpinions[rng] * 3 : _nameOpinions[rng];
             _nameOpinions.RemoveAt(rng);
 
             rng = Random.Range(0, i);
-            _currentCuties[i - 1].AgeOpinion = _ageOpinions[rng];
+            _currentCuties[i - 1].AgeOpinion = crimeIndex == 2 ? _ageOpinions[rng] * 3 : _ageOpinions[rng];
             _ageOpinions.RemoveAt(rng);
 
             rng = Random.Range(0, i);
-            _currentCuties[i - 1].ColorOpinion = _colorOpinions[rng];
+            _currentCuties[i - 1].ColorOpinion = crimeIndex == 6 ? _colorOpinions[rng] * 3 : _colorOpinions[rng];
             _colorOpinions.RemoveAt(rng);
 
             rng = Random.Range(0, i);
-            _currentCuties[i - 1].CandyOpinion = _candyOpinions[rng];
+            _currentCuties[i - 1].CandyOpinion = crimeIndex == 0 ? _candyOpinions[rng] * 3 : _candyOpinions[rng];
             _candyOpinions.RemoveAt(rng);
 
             rng = Random.Range(0, i);
-            _currentCuties[i - 1].StarSignOpinion = _signOpinions[rng];
+            _currentCuties[i - 1].StarSignOpinion = crimeIndex == 5 ? _signOpinions[rng] * 3 : _signOpinions[rng];
             _signOpinions.RemoveAt(rng);
 
             rng = Random.Range(0, i);
-            _currentCuties[i - 1].SocialMediaOpinion = _socialMediaOpinions[rng];
+            _currentCuties[i - 1].SocialMediaOpinion = crimeIndex == 1 ? _socialMediaOpinions[rng] * 3 : _socialMediaOpinions[rng];
             _socialMediaOpinions.RemoveAt(rng);
 
             rng = Random.Range(0, i);
-            _currentCuties[i - 1].TVOpinion = _tvOpinions[rng];
+            _currentCuties[i - 1].TVOpinion = crimeIndex == 4 ? _tvOpinions[rng] * 3 : _tvOpinions[rng];
             _tvOpinions.RemoveAt(rng);
 
             rng = Random.Range(0, i);
-            _currentCuties[i - 1].PoliticsOpinion = _politicalOpinions[rng];
+            _currentCuties[i - 1].PoliticsOpinion = crimeIndex == 7 ? _politicalOpinions[rng] * 3 : _politicalOpinions[rng];
             _politicalOpinions.RemoveAt(rng);
+
+            _currentCuties[i - 1].OverallScore =
+                _currentCuties[i - 1].NameOpinion +
+                _currentCuties[i - 1].AgeOpinion +
+                _currentCuties[i - 1].ColorOpinion +
+                _currentCuties[i - 1].CandyOpinion +
+                _currentCuties[i - 1].StarSignOpinion +
+                _currentCuties[i - 1].SocialMediaOpinion +
+                _currentCuties[i - 1].TVOpinion +
+                _currentCuties[i - 1].PoliticsOpinion;
         }
 
         OpinionsPopulated = true;
@@ -103,6 +115,7 @@ public class CutieBehavior : MonoBehaviour
     {
         IsInstantiated = true;
 
+        InstantCuties = InstantiateCuties();
         StartCoroutine(InstantCuties);
     }
 
@@ -110,6 +123,7 @@ public class CutieBehavior : MonoBehaviour
     {
         IsInstantiated = false;
 
+        RemoveCuties = RetireCuties();
         StartCoroutine(RemoveCuties);
     }
 
@@ -119,8 +133,6 @@ public class CutieBehavior : MonoBehaviour
 
         HighlightedJuror.MakeDisappear();
 
-        HighlightedJuror = null;
-
         Camera.main.transform.position = GameBehavior.Instance.MainCameraPosition;
         GameBehavior.Instance.CurrentState = GameBehavior.GameState.Running;
 
@@ -129,8 +141,14 @@ public class CutieBehavior : MonoBehaviour
             GameBehavior.Instance.CurrentState = GameBehavior.GameState.PostTransition;
     }
 
+    public void StartFinalJudgement()
+    {
+        StartCoroutine(FinalJudge);
+    }
+
     IEnumerator InstantiateCuties()
     {
+        _disappearCount = 0;
         for (int i = 0; i < 8; i++)
         {
             int rng = Random.Range(0, Cuties.Count);
@@ -150,25 +168,52 @@ public class CutieBehavior : MonoBehaviour
 
     IEnumerator RetireCuties()
     {
-        for (int i = 6; i > 0; i--)
-        {
-            yield return new WaitForSeconds(0.66f);
-
-            _finalJurors[i - 1] = _currentCuties[i - 1];
-
-            _currentCuties[i - 1].MakeDisappear();
-
-            _currentCuties.RemoveAt(i - 1);
-        }
-
         if (IsRoundOne)
         {
+            for (int i = 6; i > 0; i--)
+            {
+                _finalJurors[i - 1] = _currentCuties[i - 1];
+
+                _currentCuties[i - 1].MakeDisappear();
+
+                _currentCuties.RemoveAt(i - 1);
+
+                yield return new WaitForSeconds(0.66f);
+            }
+
             IsRoundOne = false;
+            OpinionsPopulated = false;
             GameBehavior.Instance.CurrentState = GameBehavior.GameState.PreTransition;
         }
         else
         {
-            GameBehavior.Instance.CurrentState = GameBehavior.GameState.GameOver;
+            for (int i = 12; i > 6; i--)
+            {
+                _finalJurors[i - 1] = _currentCuties[i - 7];
+
+                _currentCuties[i - 7].MakeDisappear();
+
+                _currentCuties.RemoveAt(i - 7);
+
+                yield return new WaitForSeconds(0.66f);
+            }
+
+            GameBehavior.Instance.CurrentState = GameBehavior.GameState.FinalTransition;
         }
+    }
+
+    IEnumerator FinalJudgement()
+    {
+        for (int i = 0; i < 12; i++)
+        {
+            GameBehavior.Instance.FinalSum += _finalJurors[i].OverallScore;
+
+            _finalJurors[i].transform.position = FinalSeats[i].position;
+            _finalJurors[i].MakeAppear();
+
+            yield return new WaitForSeconds(0.33f);
+        }
+
+        GameBehavior.Instance.CurrentState = GameBehavior.GameState.GameOver;
     }
 }

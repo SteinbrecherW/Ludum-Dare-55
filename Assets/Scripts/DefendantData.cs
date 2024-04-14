@@ -6,16 +6,26 @@ public class DefendantData : MonoBehaviour
 {
     [HideInInspector] public static DefendantData Instance;
 
+    /*
+     * Candy
+     * Social Media
+     * Age
+     * Name
+     * TV
+     * Star Sign
+     * Color
+     * Politics
+     */
     [HideInInspector] public string[] Crimes =
     {
         "Thief Steals Candy From Baby",
-        "Spreading Misinformation Online",
+        "Person Spreads Misinformation Online",
         "Public Indecency at Retirement Home",
         "Illegal Name Change Has Dire Results",
-        "Won't Stop Talking About Favorite TV Show",
-        "Lying About Self On Dating Apps",
-        "Elementary School Art Theft",
-        "Attempted Coup Performed Single-Handedly"
+        "They Won't Stop Talking About Their Favorite TV Show",
+        "They Lied About Themself On Dating Apps",
+        "The Elementary School Art Thief",
+        "Government Coup Attempted Single-Handedly"
     };
 
     [HideInInspector] public string[] Articles =
@@ -60,9 +70,9 @@ public class DefendantData : MonoBehaviour
 
     [HideInInspector] public string[] Ages =
     {
-        "Gen Omicron",
+        "Generation Omicron",
         "Centennials",
-        "Gen Bronze",
+        "Generation Bronze",
         "Scooners",
         "The Okayest Generation",
     };
@@ -124,7 +134,8 @@ public class DefendantData : MonoBehaviour
         "Better Ring Ming",
         "The Cable",
         "Family Dad",
-        "Rock and Moriarty"
+        "Rock and Moriarty",
+        "Old Feldman"
     };
 
     [HideInInspector] public string[] Politics =
