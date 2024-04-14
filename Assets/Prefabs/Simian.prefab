@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6516422663710270874}
   - component: {fileID: 2483563505641228890}
   - component: {fileID: 4666739469763573527}
+  - component: {fileID: 3575728234127883797}
   m_Layer: 0
   m_Name: Simian
   m_TagString: Untagged
@@ -121,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JurorMaterial: {fileID: 0}
   JurorData: {fileID: 4666739469763573527}
+  _anim: {fileID: 0}
 --- !u!114 &4666739469763573527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245a6ee5dd3654884a795845d659f138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
   Introduction: 
   NameOpinionPositive: 
   NameOpinionNeutral: 
@@ -156,3 +159,24 @@ MonoBehaviour:
   PoliticalOpinionNeutral: 
   PoliticalOpinionNegative: 
   Outtroduction: 
+--- !u!95 &3575728234127883797
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2167121662430408579}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 48b1d458b56a74a9db60bbc0c97ea2e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

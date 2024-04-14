@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7328381118483558851}
   - component: {fileID: 5842425902576260914}
   - component: {fileID: 1040958333409231212}
+  - component: {fileID: -4555150453161711762}
   m_Layer: 0
   m_Name: Sssarah
   m_TagString: Untagged
@@ -121,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JurorMaterial: {fileID: 0}
   JurorData: {fileID: 1040958333409231212}
+  _anim: {fileID: 0}
 --- !u!114 &1040958333409231212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7fe9e76497e4fc0a1ebaea51b3b20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
   Introduction: 
   NameOpinionPositive: 
   NameOpinionNeutral: 
@@ -156,3 +159,24 @@ MonoBehaviour:
   PoliticalOpinionNeutral: 
   PoliticalOpinionNegative: 
   Outtroduction: 
+--- !u!95 &-4555150453161711762
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549784823878601836}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 48b1d458b56a74a9db60bbc0c97ea2e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

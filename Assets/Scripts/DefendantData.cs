@@ -4,35 +4,49 @@ using UnityEngine;
 
 public class DefendantData : MonoBehaviour
 {
-    public static DefendantData Instance;
+    [HideInInspector] public static DefendantData Instance;
 
-    public string[] Crimes =
+    [HideInInspector] public string[] Crimes =
     {
-        "Candy Store Robbery",
-        "Spreading Misinformation",
+        "Thief Steals Candy From Baby",
+        "Spreading Misinformation Online",
         "Public Indecency at Retirement Home",
-        "Illegal Name Change",
+        "Illegal Name Change Has Dire Results",
         "Won't Stop Talking About Favorite TV Show",
         "Lying About Self On Dating Apps",
-        "Art Theft"
+        "Elementary School Art Theft",
+        "Attempted Coup Performed Single-Handedly"
     };
 
-    public string[] FirstNames =
+    [HideInInspector] public string[] Articles =
     {
-        "Alex",
-        "Matt",
-        "Carl",
-        "Jane",
-        "Jeff",
-        "Fran",
-        "Gabe",
+        "Will their candy of choice sway jurors?",
+        "Will their social media posts convince anybody?",
+        "Will the jury's presumptions on age come into play?",
+        "Will the jurors find his new name ridiculous?",
+        "Will the court find his hot TV takes acceptable?",
+        "Will the jury think that star sign really matters?",
+        "Will the defendant's favorite color be persuasive?",
+        "Will the defense's political beliefs rile up a jury?"
+    };
+
+    [HideInInspector] public string[] FirstNames =
+    {
+        "Barton",
+        "Scamp",
+        "McHael",
+        "Peeps",
+        "Bivvy",
+        "Dand",
+        "Loffo",
         "Kilp",
         "Ghen",
         "Flis"
     };
-    public string[] LastNames =
+
+    [HideInInspector] public string[] LastNames =
     {
-        "Smith",
+        "McGee",
         "Frank",
         "Lars",
         "Bole",
@@ -44,7 +58,16 @@ public class DefendantData : MonoBehaviour
         "Mema"
     };
 
-    public string[] FavoriteColors =
+    [HideInInspector] public string[] Ages =
+    {
+        "Gen Omicron",
+        "Centennials",
+        "Gen Bronze",
+        "Scooners",
+        "The Okayest Generation",
+    };
+
+    [HideInInspector] public string[] FavoriteColors =
     {
         "Green",
         "Blue",
@@ -58,7 +81,7 @@ public class DefendantData : MonoBehaviour
         "Transparent"
     };
 
-    public string[] FavoriteCandies =
+    [HideInInspector] public string[] FavoriteCandies =
     {
         "Giggles",
         "Mrs. BadBar",
@@ -72,7 +95,7 @@ public class DefendantData : MonoBehaviour
         "Larry-O's"
     };
 
-    public string[] StarSigns =
+    [HideInInspector] public string[] StarSigns =
     {
         "Boris",
         "Copperborn",
@@ -85,7 +108,7 @@ public class DefendantData : MonoBehaviour
         "Monkey"
     };
 
-    public string[] SocialMedias =
+    [HideInInspector] public string[] SocialMedias =
     {
         "Scooper",
         "InstantGram",
@@ -94,7 +117,7 @@ public class DefendantData : MonoBehaviour
         "BrownIt",
     };
 
-    public string[] TVShows =
+    [HideInInspector] public string[] TVShows =
     {
         "The Tenors",
         "Hurting Bad",
@@ -104,7 +127,7 @@ public class DefendantData : MonoBehaviour
         "Rock and Moriarty"
     };
 
-    public string[] Politics =
+    [HideInInspector] public string[] Politics =
     {
         "Donkeycrat",
         "Elepublican",

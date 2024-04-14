@@ -10,6 +10,8 @@ public class GameBehavior : MonoBehaviour
     public enum GameState
     {
         Start,
+        PreGame,
+        PreTransition,
         Running,
         Focused,
         Paused,
@@ -31,10 +33,39 @@ public class GameBehavior : MonoBehaviour
 
                     break;
 
-                case GameState.Running:
+                case GameState.PreGame:
 
-                    if (!CutieBehavior.Instance.IsInstantiated)
-                        CutieBehavior.Instance.InstantiateJurors();
+                    _startMenu.SetActive(false);
+
+                    _clipboard.SetActive(true);
+
+                    ClipboardNameText.text = DefendantBehavior.Instance.Name;
+                    AgeText.text = "Age: " + DefendantBehavior.Instance.Age;
+                    ColorText.text = "Fav. Color: " + DefendantBehavior.Instance.Color;
+                    CandyText.text = "Fav. Candy: " + DefendantBehavior.Instance.Candy;
+                    StarSignText.text = "Star Sign: " + DefendantBehavior.Instance.StarSign;
+                    SocialMediaText.text = "Fav. Social Media: " + DefendantBehavior.Instance.SocialMedia;
+                    TVText.text = "Fav. TV Show: " + DefendantBehavior.Instance.TVShow;
+                    PoliticsText.text = "Politics: " + DefendantBehavior.Instance.Politics;
+
+                    break;
+
+                case GameState.PreTransition:
+
+                    _as.Stop();
+                    _as.PlayOneShot(_transition);
+                    CutieBehavior.Instance.InstantiateJurors();
+
+                    NameText.text = "Judge";
+                    DialogueText.text = "SUMMON THE JURY!";
+                    _dialogueBox.SetActive(true);
+
+                    if (_questionUI.activeSelf == true)
+                        _questionUI.SetActive(false);
+
+                    break;
+
+                case GameState.Running:
 
                     if (_startMenu.activeSelf == true)
                         _startMenu.SetActive(false);
@@ -45,11 +76,20 @@ public class GameBehavior : MonoBehaviour
                     if (_dialogueBox.activeSelf == true)
                         _dialogueBox.SetActive(false);
 
-                    if(_as.clip != _gameLoop)
+                    if (_clipboard.activeSelf == true)
+                        _clipboard.SetActive(false);
+
+                    if (_newspaper.activeSelf == true)
+                        _newspaper.SetActive(false);
+
+                    CutieBehavior.Instance.PopulateJurorOpinions();
+
+                    if (_as.clip != _gameLoop)
                     {
                         _as.Stop();
                         _as.clip = _gameLoop;
                         _as.Play();
+                        _as.loop = true;
                     }
 
                     break;
@@ -57,6 +97,10 @@ public class GameBehavior : MonoBehaviour
                 case GameState.Focused:
 
                     _dialogueBox.SetActive(true);
+
+                    if (_questionUI.activeSelf == false)
+                        _questionUI.SetActive(true);
+
                     break;
 
                 case GameState.Paused:
@@ -75,8 +119,24 @@ public class GameBehavior : MonoBehaviour
     [SerializeField] GameObject _startMenu;
     [SerializeField] GameObject _pauseMenu;
     [SerializeField] GameObject _dialogueBox;
+    [SerializeField] GameObject _newspaper;
+    [SerializeField] GameObject _clipboard;
+    [SerializeField] GameObject _questionUI;
+
     public TextMeshProUGUI DialogueText;
     public TextMeshProUGUI NameText;
+
+    public TextMeshProUGUI HeadlineText;
+    public TextMeshProUGUI ArticleText;
+
+    public TextMeshProUGUI ClipboardNameText;
+    public TextMeshProUGUI AgeText;
+    public TextMeshProUGUI ColorText;
+    public TextMeshProUGUI CandyText;
+    public TextMeshProUGUI StarSignText;
+    public TextMeshProUGUI SocialMediaText;
+    public TextMeshProUGUI TVText;
+    public TextMeshProUGUI PoliticsText;
 
     public Vector3 MainCameraPosition;
 
@@ -106,8 +166,31 @@ public class GameBehavior : MonoBehaviour
             case GameState.Start:
 
                 if (Input.GetKeyDown(KeyCode.Return))
-                    CurrentState = GameState.Running;
+                    CurrentState = GameState.PreGame;
 
+                break;
+
+            case GameState.PreGame:
+
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    if (_clipboard.activeSelf == true)
+                    {
+                        _clipboard.SetActive(false);
+                        _newspaper.SetActive(true);
+
+                        HeadlineText.text = DefendantBehavior.Instance.Crime;
+                        ArticleText.text = DefendantBehavior.Instance.Article;
+                    }
+                    else
+                    {
+                        _newspaper.SetActive(false);
+                        CurrentState = GameState.PreTransition;
+                    }
+                }
+                break;
+
+            case GameState.PreTransition:
                 break;
 
             case GameState.Running:
