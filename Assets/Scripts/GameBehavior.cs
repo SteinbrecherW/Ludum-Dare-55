@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameBehavior : MonoBehaviour
@@ -11,6 +12,7 @@ public class GameBehavior : MonoBehaviour
     public enum GameState
     {
         Start,
+        Rules,
         PreGame,
         PreTransition,
         Running,
@@ -32,8 +34,21 @@ public class GameBehavior : MonoBehaviour
             {
                 case GameState.Start:
 
+                    _splashMenu.SetActive(true);
+
+                    break;
+
+                case GameState.Rules:
+
+                    _splashMenu.SetActive(false);
+
                     if (_startMenu.activeSelf != true)
                         _startMenu.SetActive(true);
+
+                    RulesTitleText.text = "Rules (1/8)";
+
+                    RulesText.text = _rulesPages[0];
+                    RulesImage.sprite = _rulesImages[0];
 
                     break;
 
@@ -44,7 +59,7 @@ public class GameBehavior : MonoBehaviour
                     _clipboard.SetActive(true);
 
                     ClipboardNameText.text = DefendantBehavior.Instance.Name;
-                    AgeText.text = "Age: " + DefendantBehavior.Instance.Age;
+                    AgeText.text = "Age Range: " + DefendantBehavior.Instance.Age;
                     ColorText.text = "Fav. Color: " + DefendantBehavior.Instance.Color;
                     CandyText.text = "Fav. Candy: " + DefendantBehavior.Instance.Candy;
                     StarSignText.text = "Star Sign: " + DefendantBehavior.Instance.StarSign;
@@ -79,8 +94,8 @@ public class GameBehavior : MonoBehaviour
                     if (_pauseMenu.activeSelf == true)
                         _pauseMenu.SetActive(false);
 
-                    if (_dialogueBox.activeSelf == true)
-                        _dialogueBox.SetActive(false);
+                    if (_dialogueBox.activeSelf == false)
+                        _dialogueBox.SetActive(true);
 
                     if (_clipboard.activeSelf == true)
                         _clipboard.SetActive(false);
@@ -88,12 +103,17 @@ public class GameBehavior : MonoBehaviour
                     if (_newspaper.activeSelf == true)
                         _newspaper.SetActive(false);
 
-                    if(!CutieBehavior.Instance.OpinionsPopulated)
+                    if (_questionUI.activeSelf == true)
+                        _questionUI.SetActive(false);
+
+                    NameText.text = "";
+                    DialogueText.text = "Click on a juror to speak with them";
+
+                    if (!CutieBehavior.Instance.OpinionsPopulated)
                         CutieBehavior.Instance.PopulateJurorOpinions();
 
                     if (_as.clip != _gameLoop)
                     {
-                        _as.Stop();
                         _as.clip = _gameLoop;
                         _as.Play();
                         _as.loop = true;
@@ -103,10 +123,13 @@ public class GameBehavior : MonoBehaviour
 
                 case GameState.Focused:
 
-                    _dialogueBox.SetActive(true);
+                    if (_dialogueBox.activeSelf == false)
+                        _dialogueBox.SetActive(true);
 
                     if (_questionUI.activeSelf == false)
                         _questionUI.SetActive(true);
+
+                    QuestionText.text = "Question (" + CutieBehavior.Instance.HighlightedJuror.RemainingQuestions + "/3)";
 
                     break;
 
@@ -142,7 +165,6 @@ public class GameBehavior : MonoBehaviour
                         Quaternion.Euler(15, -16, 0)
                     );
 
-                    _as.Stop();
                     _as.pitch = 1;
                     _as.time = 0;
                     _as.PlayOneShot(_transition);
@@ -161,13 +183,15 @@ public class GameBehavior : MonoBehaviour
 
                     DialogueText.text = "What's your decision?";
 
+                    CutieBehavior.Instance.AS.pitch = 1;
+                    CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.JudgeOrderClip);
+
                     StartCoroutine(_finalCoroutine);
 
                     break;
 
                 case GameState.Finale:
 
-                    _as.Stop();
                     _as.loop = true;
                     _as.clip = _endLoop;
                     _as.Play();
@@ -182,7 +206,11 @@ public class GameBehavior : MonoBehaviour
         }
     }
 
+    [SerializeField] GameObject _splashMenu;
     [SerializeField] GameObject _startMenu;
+    [SerializeField] string[] _rulesPages;
+    [SerializeField] Sprite[] _rulesImages;
+
     [SerializeField] GameObject _pauseMenu;
     [SerializeField] GameObject _dialogueBox;
     [SerializeField] GameObject _newspaper;
@@ -190,8 +218,14 @@ public class GameBehavior : MonoBehaviour
     [SerializeField] GameObject _questionUI;
     [SerializeField] GameObject _gameOverMenu;
 
+    int _rulePageIndex = 0;
+    public TextMeshProUGUI RulesTitleText;
+    public TextMeshProUGUI RulesText;
+    public Image RulesImage;
+
     public TextMeshProUGUI DialogueText;
     public TextMeshProUGUI NameText;
+    public TextMeshProUGUI QuestionText;
 
     public TextMeshProUGUI HeadlineText;
     public TextMeshProUGUI ArticleText;
@@ -244,6 +278,29 @@ public class GameBehavior : MonoBehaviour
         switch (CurrentState)
         {
             case GameState.Start:
+
+                if (Input.GetKeyDown(KeyCode.Return))
+                    CurrentState = GameState.Rules;
+
+                break;
+
+            case GameState.Rules:
+
+                if (Input.GetKeyDown(KeyCode.RightArrow) && _rulePageIndex < _rulesPages.Length - 1)
+                {
+                    _rulePageIndex++;
+                    RulesTitleText.text = "Rules (" + (_rulePageIndex + 1) + "/8)";
+                    RulesText.text = _rulesPages[_rulePageIndex];
+                    RulesImage.sprite = _rulesImages[_rulePageIndex];
+                }
+
+                if (Input.GetKeyDown(KeyCode.LeftArrow) && _rulePageIndex > 0)
+                {
+                    _rulePageIndex--;
+                    RulesTitleText.text = "Rules (" + (_rulePageIndex + 1) + "/8)";
+                    RulesText.text = _rulesPages[_rulePageIndex];
+                    RulesImage.sprite = _rulesImages[_rulePageIndex];
+                }
 
                 if (Input.GetKeyDown(KeyCode.Return))
                     CurrentState = GameState.PreGame;

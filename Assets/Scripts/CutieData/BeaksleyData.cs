@@ -6,6 +6,8 @@ public class BeaksleyData : CutieData
 {
     void Start()
     {
+        VoicePitch = 1.1f;
+
         Name = "Beaksley";
 
         Introduction = "Good morrow!";
@@ -29,6 +31,10 @@ public class BeaksleyData : CutieData
         StarSignOpinionPositive = "I believe that's the Queen's sign! It's probably my favorite.";
         StarSignOpinionNeutral = "I find star signs to be a silly exercise, but to each their own.";
         StarSignOpinionNegative = "H**T! Oh, pardon me, but that was my ex-wife's sign. Ugh...";
+
+        SocialMediaOpinionPositive = "I use that app to read my stories! A lovely interface indeed.";
+        SocialMediaOpinionNeutral = "It's fine, my children use it constantly.";
+        SocialMediaOpinionNegative = "That app is full of nothing but hatred and misinformation.";
 
         TVOpinionPositive = "Ahh yes, a true masterpiece of fiction! Have you seen the finale?";
         TVOpinionNeutral = "Not my cup of tea, but I'll admit I've seen far worse.";

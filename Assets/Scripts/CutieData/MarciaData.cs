@@ -6,6 +6,8 @@ public class MarciaData : CutieData
 {
     void Start()
     {
+        VoicePitch = 1.35f;
+
         Name = "Municipal Marcia";
 
         Introduction = "HEYO! I feel funny...";
@@ -29,6 +31,10 @@ public class MarciaData : CutieData
         StarSignOpinionPositive = "MY BEST FRIEND HAS THAT SIGN! I haven't seen them in years...";
         StarSignOpinionNeutral = "I HATE SOME SIGNS MORE THAN THAT! That's what I meant to say...";
         StarSignOpinionNegative = "I DON'T ALIGN WITH THAT SIGN! Heh, that rhymed...";
+
+        SocialMediaOpinionPositive = "ALL MY FRIENDS USE THAT APP! Where did they run off to...";
+        SocialMediaOpinionNeutral = "I KNOW SOME PEOPLE THAT USE THAT APP! I don't really know anybody...";
+        SocialMediaOpinionNegative = "THAT APP'S FULL OF EVIL CRAZIES! Maybe I'm one of them...";
 
         TVOpinionPositive = "THAT SHOW IS SOOO GOOD! Or am I thinking of something else...";
         TVOpinionNeutral = "I WATCHED THAT SHOW! I think it was okay...";

@@ -6,6 +6,7 @@ public class SantanderData : CutieData
 {
     void Start()
     {
+        VoicePitch = 2.5f; 
         Name = "Santander";
 
         Introduction = "Nyeh, whattup?";
@@ -29,6 +30,10 @@ public class SantanderData : CutieData
         StarSignOpinionPositive = "Nyeh, ithinkthatsaveryprettysignanditsaysgoodthingsaboutyou.";
         StarSignOpinionNeutral = "Nyeh, thatsignsprettymiddleoftheroadnotgoodorbadinmyopinion.";
         StarSignOpinionNegative = "Nyeh, iwouldnttrustyouifyoutoldmethatthatwasyoursign.";
+
+        SocialMediaOpinionPositive = "Nyeh, iusethatappallthetimeitsaddictive.";
+        SocialMediaOpinionNeutral = "Nyeh, idontreallyhveastrongopiniononthepeoplethatusethatapp.";
+        SocialMediaOpinionNegative = "Nyeh, thatappisinfestedwithweirdsadevilpeople.";
 
         TVOpinionPositive = "Nyeh, thatisoneofmyalltimefavoriteshowsandimsohappyyoubroughtitup.";
         TVOpinionNeutral = "Nyeh, thatshowismostlyokayexceptidontreallyseekitoutirectly.";

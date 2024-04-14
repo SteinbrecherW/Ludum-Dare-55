@@ -6,6 +6,8 @@ public class SimianData : CutieData
 {
     void Start()
     {
+        VoicePitch = 1.4f;
+
         Name = "Simian";
 
         Introduction = "OOH! Hi!";
@@ -29,6 +31,10 @@ public class SimianData : CutieData
         StarSignOpinionPositive = "OOH OOH! Holy sign!";
         StarSignOpinionNeutral = "OOH! Unimportant sign!";
         StarSignOpinionNegative = "AAH! Evil sign!";
+
+        SocialMediaOpinionPositive = "OOH! OOH! Funny app!";
+        SocialMediaOpinionNeutral = "OOH! Typical app!";
+        SocialMediaOpinionNegative = "AAH! Toxic app!";
 
         TVOpinionPositive = "OOH OOH! Acclaimed show!";
         TVOpinionNeutral = "OOH! Forgettable show!";

@@ -6,6 +6,8 @@ public class QuibbyData : CutieData
 {
     void Start()
     {
+        VoicePitch = 1.75f;
+
         Name = "Quibby";
 
         Introduction = "Heeey guurrll! I'm Quibby.";
@@ -29,6 +31,10 @@ public class QuibbyData : CutieData
         StarSignOpinionPositive = "OMG, we're super compatible from that sign! Why didn't you tell me?";
         StarSignOpinionNeutral = "That makes so much sense for you. Could be worse, though.";
         StarSignOpinionNegative = "Honestly, I don't know if I can talk to you anymore if that's your sign.";
+
+        SocialMediaOpinionPositive = "SLAAAY! You should totally add me, let's collab!";
+        SocialMediaOpinionNeutral = "I only use that for my business promo, kinda boring.";
+        SocialMediaOpinionNegative = "Eww. I don't even use that site for SEI.";
 
         TVOpinionPositive = "That show is EVERYTHING! SO GOOD!!!";
         TVOpinionNeutral = "My friend likes that show. I don't like them very much, though.";

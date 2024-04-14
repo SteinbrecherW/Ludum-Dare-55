@@ -6,6 +6,8 @@ public class MinkeyData : CutieData
 {
     void Start()
     {
+        VoicePitch = 0.75f;
+
         Name = "Minkey";
 
         Introduction = "Hello-ho-ho.";
@@ -29,6 +31,10 @@ public class MinkeyData : CutieData
         StarSignOpinionPositive = "Good sign, good sign. Oh-ho-ho.";
         StarSignOpinionNeutral = "Fine sign, fine sign. Oh-ho-ho.";
         StarSignOpinionNegative = "Bad sign, bad sign. No-no-no.";
+
+        SocialMediaOpinionPositive = "Good app, good app. Oh-ho-ho.";
+        SocialMediaOpinionNeutral = "Fine app, fine app. Oh-ho-ho.";
+        SocialMediaOpinionNegative = "Evil app, evil app. No-no-no.";
 
         TVOpinionPositive = "Good show, good show. Oh-ho-ho.";
         TVOpinionNeutral = "Fine show, fine show. Oh-ho-ho.";

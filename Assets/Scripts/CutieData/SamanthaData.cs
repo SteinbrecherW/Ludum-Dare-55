@@ -6,6 +6,8 @@ public class SamanthaData : CutieData
 {
     void Start()
     {
+        VoicePitch = 1.3f;
+
         Name = "Samantha";
 
         Introduction = "Oh, hello.";
@@ -29,6 +31,10 @@ public class SamanthaData : CutieData
         StarSignOpinionPositive = "Why, that's my sign! Marvelous.";
         StarSignOpinionNeutral = "I've know some nice people with that sign.";
         StarSignOpinionNegative = "Oh, I don't think so. No.";
+
+        SocialMediaOpinionPositive = "I use that app to talk to my kids.";
+        SocialMediaOpinionNeutral = "I've never heard of that, what is it?";
+        SocialMediaOpinionNegative = "Only an evil type of people use that app.";
 
         TVOpinionPositive = "What a lovely program.";
         TVOpinionNeutral = "I don't get the appeal, but it's caused quite a stir.";

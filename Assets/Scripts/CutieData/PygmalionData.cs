@@ -6,6 +6,8 @@ public class PygmalionData : CutieData
 {
     void Start()
     {
+        VoicePitch = 0.8f;
+
         Name = "Pygmalion";
 
         Introduction = "I'm Pygmalion. Do you have any drugs?";
@@ -29,6 +31,10 @@ public class PygmalionData : CutieData
         StarSignOpinionPositive = "People with that sign always give me the best gas.";
         StarSignOpinionNeutral = "People with that sign usually have okay drugs.";
         StarSignOpinionNegative = "I get skunk crunk from people with that sign, not good at all.";
+
+        SocialMediaOpinionPositive = "Great site, I buy my drugs through there all the time.";
+        SocialMediaOpinionNeutral = "It's fine for contacting dealers, but nothing special.";
+        SocialMediaOpinionNegative = "I've never been able to find a plug on that app. No good.";
 
         TVOpinionPositive = "Good show. Are you sure you don't have any drugs?";
         TVOpinionNeutral = "Ok show. I would literally do anything for some blow.";

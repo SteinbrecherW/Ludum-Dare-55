@@ -6,6 +6,8 @@ public class JasperData : CutieData
 {
     void Start()
     {
+        VoicePitch = 0.95f;
+
         Name = "Jasper";
 
         Introduction = "Oh, hey there.";
@@ -29,6 +31,10 @@ public class JasperData : CutieData
         StarSignOpinionPositive = "Good one, I think that's my girlfriend's sign. Did you know I have a girlfriend?";
         StarSignOpinionNeutral = "This conversation's going nowhere. Have you heard the new album by Edging?";
         StarSignOpinionNegative = "Star signs are pretentious and anti-intelligent if you ask me. Not good.";
+
+        SocialMediaOpinionPositive = "I get all of my opinions from that website. Very reliable information.";
+        SocialMediaOpinionNeutral = "You use that app? Normie. Could be worse, though.";
+        SocialMediaOpinionNegative = "Only idiots use that app. Cretins with no taste.";
 
         TVOpinionPositive = "That's an amazing show. Ten out of ten. You have good taste.";
         TVOpinionNeutral = "That show? It's so mid, but I guess most plebians would enjoy it...";

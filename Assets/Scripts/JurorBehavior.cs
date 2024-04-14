@@ -29,18 +29,17 @@ public class JurorBehavior : MonoBehaviour
 
     private void Start()
     {
-        _anim = GetComponent<Animator>();
-        MakeAppear();
-
         _highlightedCameraPosition =
-            new Vector3(
-                    transform.position.x,
-                    transform.position.y - 0.5f,
-                    transform.position.z - 5
-            )
-        ;
+        new Vector3(
+            transform.position.x,
+            transform.position.y - 0.5f,
+            transform.position.z - 5
+        );
 
         _disappearCoroutine = Disappear();
+
+        _anim = GetComponent<Animator>();
+        MakeAppear();
     }
 
     public void MakeAppear()
@@ -69,6 +68,9 @@ public class JurorBehavior : MonoBehaviour
 
                 CutieBehavior.Instance.HighlightedJuror = this;
 
+                CutieBehavior.Instance.AS.pitch = JurorData.VoicePitch;
+                CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.HelloClip);
+
                 GameBehavior.Instance.CurrentState = GameBehavior.GameState.Focused;
             }
             else if (GameBehavior.Instance.CurrentState == GameBehavior.GameState.Focused &&
@@ -78,6 +80,9 @@ public class JurorBehavior : MonoBehaviour
 
                 CutieBehavior.Instance.HighlightedJuror = null;
 
+                CutieBehavior.Instance.AS.pitch = JurorData.VoicePitch;
+                CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.GoodbyeClip);
+
                 GameBehavior.Instance.CurrentState = GameBehavior.GameState.Running;
             }
         }
@@ -85,22 +90,34 @@ public class JurorBehavior : MonoBehaviour
 
     public void AnswerQuestion(bool correct, int categoryIndex)
     {
+        CutieBehavior.Instance.AS.pitch = JurorData.VoicePitch;
         switch (categoryIndex)
         {
             case 0:
                 if (correct)
                 {
                     if(NameOpinion < 0)
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
-
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.NoClip);
+                    }
                     else if (NameOpinion == 0)
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNeutral;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                    }
 
                     else
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionPositive;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.YesClip);
+                    }
                 }
                 else
+                {
                     GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNeutral;
+                    CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                }
 
                 break;
 
@@ -108,16 +125,26 @@ public class JurorBehavior : MonoBehaviour
                 if (correct)
                 {
                     if (AgeOpinion < 0)
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.AgeOpinionNegative;
-
+                        GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
+                    }
                     else if (AgeOpinion == 0)
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.AgeOpinionNeutral;
-
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                    }
                     else
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.AgeOpinionPositive;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.YesClip);
+                    }
                 }
                 else
+                {
                     GameBehavior.Instance.DialogueText.text = JurorData.AgeOpinionNeutral;
+                    CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                }
 
                 break;
 
@@ -125,16 +152,26 @@ public class JurorBehavior : MonoBehaviour
                 if (correct)
                 {
                     if (ColorOpinion < 0)
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.ColorOpinionNegative;
-
+                        GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
+                    }
                     else if (ColorOpinion == 0)
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.ColorOpinionNeutral;
-
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                    }
                     else
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.ColorOpinionPositive;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.YesClip);
+                    }
                 }
                 else
+                {
                     GameBehavior.Instance.DialogueText.text = JurorData.ColorOpinionNeutral;
+                    CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                }
 
                 break;
 
@@ -142,16 +179,27 @@ public class JurorBehavior : MonoBehaviour
                 if (correct)
                 {
                     if (CandyOpinion < 0)
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.CandyOpinionNegative;
-
+                        GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
+                    }
                     else if (CandyOpinion == 0)
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.CandyOpinionNeutral;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                    }
 
                     else
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.CandyOpinionPositive;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.YesClip);
+                    }
                 }
                 else
+                {
                     GameBehavior.Instance.DialogueText.text = JurorData.CandyOpinionNeutral;
+                    CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                }
 
                 break;
 
@@ -159,16 +207,57 @@ public class JurorBehavior : MonoBehaviour
                 if (correct)
                 {
                     if (StarSignOpinion < 0)
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.StarSignOpinionNegative;
+                        GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
+                    }
 
                     else if (StarSignOpinion == 0)
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.StarSignOpinionNeutral;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                    }
 
                     else
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.StarSignOpinionPositive;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.YesClip);
+                    }
                 }
                 else
+                {
                     GameBehavior.Instance.DialogueText.text = JurorData.StarSignOpinionNeutral;
+                    CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                }
+
+                break;
+
+            case 5:
+                if (correct)
+                {
+                    if (SocialMediaOpinion < 0)
+                    {
+                        GameBehavior.Instance.DialogueText.text = JurorData.SocialMediaOpinionNegative;
+                        GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
+                    }
+
+                    else if (SocialMediaOpinion == 0)
+                    {
+                        GameBehavior.Instance.DialogueText.text = JurorData.SocialMediaOpinionNeutral;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                    }
+
+                    else
+                    {
+                        GameBehavior.Instance.DialogueText.text = JurorData.SocialMediaOpinionPositive;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.YesClip);
+                    }
+                }
+                else
+                {
+                    GameBehavior.Instance.DialogueText.text = JurorData.SocialMediaOpinionNeutral;
+                    CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                }
 
                 break;
 
@@ -176,16 +265,28 @@ public class JurorBehavior : MonoBehaviour
                 if (correct)
                 {
                     if (TVOpinion < 0)
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.TVOpinionNegative;
+                        GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
+                    }
 
                     else if (TVOpinion == 0)
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.TVOpinionNeutral;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                    }
 
                     else
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.TVOpinionPositive;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.YesClip);
+                    }
                 }
                 else
+                {
                     GameBehavior.Instance.DialogueText.text = JurorData.TVOpinionNeutral;
+                    CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                }
 
                 break;
 
@@ -193,21 +294,34 @@ public class JurorBehavior : MonoBehaviour
                 if (correct)
                 {
                     if (PoliticsOpinion < 0)
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.PoliticalOpinionNegative;
+                        GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
+                    }
 
                     else if (PoliticsOpinion == 0)
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.PoliticalOpinionNeutral;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                    }
 
                     else
+                    {
                         GameBehavior.Instance.DialogueText.text = JurorData.PoliticalOpinionPositive;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.YesClip);
+                    }
                 }
                 else
+                {
                     GameBehavior.Instance.DialogueText.text = JurorData.PoliticalOpinionNeutral;
+                    CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.MehClip);
+                }
 
                 break;
         }
 
         RemainingQuestions--;
+        GameBehavior.Instance.QuestionText.text = "Question (" + CutieBehavior.Instance.HighlightedJuror.RemainingQuestions + "/3)";
     }
 
     IEnumerator Disappear()
@@ -215,6 +329,9 @@ public class JurorBehavior : MonoBehaviour
         _anim = GetComponent<Animator>();
         _anim.Play("Base Layer.MakeDisappear", 0, 0);
         GetComponent<BoxCollider>().enabled = false;
+
+        CutieBehavior.Instance.AS.pitch = JurorData.VoicePitch;
+        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.DisappearClip);
 
         yield return new WaitForSeconds(0.66f);
     }

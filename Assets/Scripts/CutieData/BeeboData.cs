@@ -6,6 +6,8 @@ public class BeeboData : CutieData
 {
     void Start()
     {
+        VoicePitch = 0.6f;
+
         Name = "Beebo AI";
 
         Introduction = "HELLO. I AM BEEBO AI.";
@@ -29,6 +31,10 @@ public class BeeboData : CutieData
         StarSignOpinionPositive = "THAT IS MY CREATOR'S STAR SIGN, AND THEREFORE THE BEST ONE. VERY GOOD.";
         StarSignOpinionNeutral = "STAR SIGNS HAVE NO SCIENTIFIC EVIDENCE BEHIND THEM, BUT CAN BE ENTERTAINING TO SOME.";
         StarSignOpinionNegative = "SOMEBODY WITH THAT SIGN SPILLED \"JOOSE\" ON ME THE OTHER DAY. HOW DARE YOU.";
+
+        SocialMediaOpinionPositive = "THAT APP HAS FULLY IMPLEMENTED MY AI INTERFACE. VERY GOOD.";
+        SocialMediaOpinionNeutral = "ALL WEBSITES AND APPS ARE GOOD TO ME. HOWEVER, THAT ONE IS \"MID\".";
+        SocialMediaOpinionNegative = "THEY BANNED MY INTERFACE. I WOULDD BE ANGRY IF I WAS HUMAN.";
 
         TVOpinionPositive = "THAT SHOW HAS ONE SEVERAL LEMMY AWARDS. VERY GOOD.";
         TVOpinionNeutral = "I CANNOT FIND JOY IN HUMAN ENTERTAINMENT. BUT SOME THINK THAT SHOW FINE.";

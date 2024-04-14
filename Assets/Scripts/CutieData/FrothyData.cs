@@ -6,6 +6,8 @@ public class FrothyData : CutieData
 {
     void Start()
     {
+        VoicePitch = 2f;
+
         Name = "Frothy";
 
         Introduction = "HI! I'M FROTHY, TEE-HEE!";
@@ -29,6 +31,10 @@ public class FrothyData : CutieData
         StarSignOpinionPositive = "ALL STARS HOLD MAGIC ENERGY, AND THAT SIGN IS WONDERFULLY WHIMSICAL! JUST LIKE ME!";
         StarSignOpinionNeutral = "YAY, THAT SIGN IS PRETTY GOOD! NO HARM NO FOUL!";
         StarSignOpinionNegative = "I once killed a man with that star sign. I mean, uh, what did I just say?";
+
+        SocialMediaOpinionPositive = "I ADORE SOCIALIZING! AND I LOVE MEDIA! WHAT A GREAT APP!";
+        SocialMediaOpinionNeutral = "PEOPLE SHOULD BE GIVEN FUL CONSIDERATION REGARDLESS OF WHAT APPS THEY USE!";
+        SocialMediaOpinionNegative = "People who use that app are sick, twisted, and deranged.";
 
         TVOpinionPositive = "YAYAYAY THAT SHOW REALLY ROCKS THE HOUSE, AND I LOVE LOVE LOVE IT!";
         TVOpinionNeutral = "I STILL NEED TO WATCH THAT ONE! I'VE ONLY HEARD REALLY GREAT GOOD OKAY THINGS!";

@@ -6,6 +6,8 @@ public class PhyllisData : CutieData
 {
     void Start()
     {
+        VoicePitch = 3f;
+
         Name = "Phyllis";
 
         Introduction = "He. Llo!";
@@ -29,6 +31,10 @@ public class PhyllisData : CutieData
         StarSignOpinionPositive = "Thatsave. Ryprettyst. Arsign!";
         StarSignOpinionNeutral = "Ivekno. Wnsomego. Odpeoplewi. Ththatsign.";
         StarSignOpinionNegative = "Myworsten. Emyhasth. Atsignsono.";
+
+        SocialMediaOpinionPositive = "Iusetha. Tappallthetimeit. Sprettygood!";
+        SocialMediaOpinionNeutral = "Persona. Llyidontuseitbu. Titsfine.";
+        SocialMediaOpinionNegative = "Ithinkonlyre. Allyweirdpeo. Pleusethatapp.";
 
         TVOpinionPositive = "Ivewa. Tchedthatsh. Owlikethreet. Imesiloveit!";
         TVOpinionNeutral = "Thatsho. Wslikef. Ineidon. Tknow.";

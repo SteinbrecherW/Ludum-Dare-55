@@ -33,8 +33,19 @@ public class CutieBehavior : MonoBehaviour
     List<int> _politicalOpinions = new List<int>();
 
     IEnumerator InstantCuties;
+    IEnumerator RemoveHighlighted;
     IEnumerator RemoveCuties;
     IEnumerator FinalJudge;
+
+    public AudioSource AS;
+    public AudioClip HelloClip;
+    public AudioClip YesClip;
+    public AudioClip MehClip;
+    public AudioClip NoClip;
+    public AudioClip GoodbyeClip;
+    public AudioClip DisappearClip;
+    public AudioClip JudgeHeyClip;
+    public AudioClip JudgeOrderClip;
 
     private void Awake()
     {
@@ -48,6 +59,8 @@ public class CutieBehavior : MonoBehaviour
     {
         _currentCuties = new List<JurorBehavior>();
         FinalJudge = FinalJudgement();
+        RemoveHighlighted = RemoveHighlightedCutie();
+        AS = GetComponent<AudioSource>();
     }
 
     public void PopulateJurorOpinions()
@@ -129,16 +142,7 @@ public class CutieBehavior : MonoBehaviour
 
     public void MakeHighlightedJurorDisappear()
     {
-        _currentCuties.Remove(HighlightedJuror);
-
-        HighlightedJuror.MakeDisappear();
-
-        Camera.main.transform.position = GameBehavior.Instance.MainCameraPosition;
-        GameBehavior.Instance.CurrentState = GameBehavior.GameState.Running;
-
-        _disappearCount++;
-        if(_disappearCount >= 2)
-            GameBehavior.Instance.CurrentState = GameBehavior.GameState.PostTransition;
+        StartCoroutine(RemoveHighlighted);
     }
 
     public void StartFinalJudgement()
@@ -158,12 +162,31 @@ public class CutieBehavior : MonoBehaviour
                 JurorSeats[i]
             ).GetComponent<JurorBehavior>());
 
+            AS.pitch = _currentCuties[i].JurorData.VoicePitch;
+            AS.PlayOneShot(HelloClip);
+
             Cuties.RemoveAt(rng);
 
             yield return new WaitForSeconds(0.66f);
         }
 
         GameBehavior.Instance.CurrentState = GameBehavior.GameState.Running;
+    }
+
+    IEnumerator RemoveHighlightedCutie()
+    {
+        _currentCuties.Remove(HighlightedJuror);
+
+        HighlightedJuror.MakeDisappear();
+
+        yield return new WaitForSeconds(0.66f);
+
+        Camera.main.transform.position = GameBehavior.Instance.MainCameraPosition;
+        GameBehavior.Instance.CurrentState = GameBehavior.GameState.Running;
+
+        _disappearCount++;
+        if (_disappearCount >= 2)
+            GameBehavior.Instance.CurrentState = GameBehavior.GameState.PostTransition;
     }
 
     IEnumerator RetireCuties()
@@ -183,6 +206,7 @@ public class CutieBehavior : MonoBehaviour
 
             IsRoundOne = false;
             OpinionsPopulated = false;
+            DefendantBehavior.Instance.AskedQuestions = new List<Vector2>();
             GameBehavior.Instance.CurrentState = GameBehavior.GameState.PreTransition;
         }
         else

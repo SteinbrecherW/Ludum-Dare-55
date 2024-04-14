@@ -6,6 +6,7 @@ public class SlimData : CutieData
 {
     void Start()
     {
+        VoicePitch = 0.75f;
         Name = "Slim Sparklez";
 
         Introduction = "Yo yo.";
@@ -26,9 +27,13 @@ public class SlimData : CutieData
         CandyOpinionNeutral = "Mid AF.";
         CandyOpinionNegative = "Could not have picked a worse candy.";
 
-        StarSignOpinionPositive = "They're chill wit me.";
+        StarSignOpinionPositive = "They chill wit me.";
         StarSignOpinionNeutral = "Don't really care.";
         StarSignOpinionNegative = "I hate everybody with that sign.";
+
+        SocialMediaOpinionPositive = "App's dope, dawg.";
+        SocialMediaOpinionNeutral = "Eh.";
+        SocialMediaOpinionNegative = "Bad people go on there.";
 
         TVOpinionPositive = "Good stuff.";
         TVOpinionNeutral = "I'd watch, I guess.";

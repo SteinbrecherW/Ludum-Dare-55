@@ -6,6 +6,8 @@ public class RoddData : CutieData
 {
     void Start()
     {
+        VoicePitch = 0.9f;
+
         Name = "Rodd, Todd, Maud, Plod, and Bodd";
 
         Introduction = "HI! We're so happy to meet you!";
@@ -29,6 +31,10 @@ public class RoddData : CutieData
         StarSignOpinionPositive = "That's Todd's sign, we love it!";
         StarSignOpinionNeutral = "That's Plod's sign, but he doesn't really talk to us much...";
         StarSignOpinionNegative = "That's Bodd's sign. He got really angry when somebody asked him his sign once.";
+
+        SocialMediaOpinionPositive = "It's great! Todd and Maud can't get enough of it!";
+        SocialMediaOpinionNeutral = "It's okay, Plod posts some weird stuff on there though...";
+        SocialMediaOpinionNegative = "Bodd got banned from that app after he made some... comments...";
 
         TVOpinionPositive = "Maud and Rodd watch that show all the time!";
         TVOpinionNeutral = "I think Plod likes that show, but I can never tell if he's even watching it...";

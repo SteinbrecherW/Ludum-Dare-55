@@ -6,6 +6,8 @@ public class BugboyData : CutieData
 {
     void Start()
     {
+        VoicePitch = 0.7f;
+
         Name = "Bugbee";
 
         Introduction = "Hmph.";
@@ -29,6 +31,10 @@ public class BugboyData : CutieData
         StarSignOpinionPositive = "That's a fine sign. Hmph.";
         StarSignOpinionNeutral = "Whatever, shut up. Hmph.";
         StarSignOpinionNegative = "That's my sign. I hate it. Hmph.";
+
+        SocialMediaOpinionPositive = "It's a good app. Hmph.";
+        SocialMediaOpinionNeutral = "It's fine, lotta yelling. Hmph.";
+        SocialMediaOpinionNegative = "Bad, toxic app. Hmph.";
 
         TVOpinionPositive = "Good show. Hmph.";
         TVOpinionNeutral = "What do you want from me, it's fine? I guess? Hmph.";

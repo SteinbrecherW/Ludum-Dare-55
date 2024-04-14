@@ -6,6 +6,8 @@ public class WobbelData : CutieData
 {
     void Start()
     {
+        VoicePitch = 1.3f;
+
         Name = "Wobbel and Bobbel";
 
         Introduction = "Oh, um, hi. Um, I - um.";
@@ -29,6 +31,10 @@ public class WobbelData : CutieData
         StarSignOpinionPositive = "That's Bobbel's sign. Well, it's not, it - he is, um, my sign too.";
         StarSignOpinionNeutral = "We don't really, um. I don't care, or I mean, um. No comment.";
         StarSignOpinionNegative = "We have bad, um, ex - Bobbel doesn't - I don't, um, no. Bad.";
+
+        SocialMediaOpinionPositive = "I, um, don't really - we - yeah, it's good. Bobbel says. It's good.";
+        SocialMediaOpinionNeutral = "I think, um. I'm not, like, a social, guy? I don't use it.";
+        SocialMediaOpinionNegative = "That app, really. Um. Scared Bobbel. We don't like it. Scary.";
 
         TVOpinionPositive = "That's a good, er, really. I like, the way, that, um. We watch it. It's good.";
         TVOpinionNeutral = "We, or, well, Bobbel, um - I tried to, um , watch it? It's fine.";

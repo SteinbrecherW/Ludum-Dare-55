@@ -37,7 +37,7 @@ public class DefendantBehavior : MonoBehaviour
     [SerializeField] List<TMP_Dropdown.OptionData> _tvShowOptions;
     [SerializeField] List<TMP_Dropdown.OptionData> _politicalOptions;
 
-    List<Vector2> _askedQuestions = new List<Vector2>();
+    public List<Vector2> AskedQuestions = new List<Vector2>();
 
     public bool IsQuestioning = false;
 
@@ -137,6 +137,9 @@ public class DefendantBehavior : MonoBehaviour
         }
         else
         {
+            CutieBehavior.Instance.AS.pitch = 1;
+            CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.JudgeHeyClip);
+
             GameBehavior.Instance.NameText.text = "Judge";
             GameBehavior.Instance.DialogueText.text = "You've asked them enough questions!";
         }
@@ -147,7 +150,7 @@ public class DefendantBehavior : MonoBehaviour
         Vector2 question = new Vector2(_topDrop.value, _bottomDrop.value);
 
         int count = 0;
-        foreach(Vector2 v in _askedQuestions)
+        foreach(Vector2 v in AskedQuestions)
         {
             if (v == question)
                 count++;
@@ -155,12 +158,15 @@ public class DefendantBehavior : MonoBehaviour
 
         if(count >= 2)
         {
+            CutieBehavior.Instance.AS.pitch = 1;
+            CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.JudgeHeyClip);
+
             GameBehavior.Instance.NameText.text = "Judge";
             GameBehavior.Instance.DialogueText.text = "You've asked that question enough!";
         }
         else
         {
-            _askedQuestions.Add(question);
+            AskedQuestions.Add(question);
 
             bool correct = false;
             switch (_topDrop.value)

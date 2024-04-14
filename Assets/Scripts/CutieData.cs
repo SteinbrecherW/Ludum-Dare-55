@@ -28,6 +28,10 @@ public abstract class CutieData : MonoBehaviour
     [HideInInspector] public string StarSignOpinionNeutral;
     [HideInInspector] public string StarSignOpinionNegative;
 
+    [HideInInspector] public string SocialMediaOpinionPositive;
+    [HideInInspector] public string SocialMediaOpinionNeutral;
+    [HideInInspector] public string SocialMediaOpinionNegative;
+
     [HideInInspector] public string TVOpinionPositive;
     [HideInInspector] public string TVOpinionNeutral;
     [HideInInspector] public string TVOpinionNegative;
@@ -37,4 +41,6 @@ public abstract class CutieData : MonoBehaviour
     [HideInInspector] public string PoliticalOpinionNegative;
 
     [HideInInspector] public string Outtroduction;
+
+    [HideInInspector] public float VoicePitch;
 }
