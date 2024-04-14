@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 9bb5c19bf1cef49b5bb969e8be31cbea
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Planet Benson Two
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 89307d5d05fc3494c8868d1014957bb8, type: 3}
+  - {fileID: 12800000, guid: 884fb6fa790054b949bc1410774f275b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

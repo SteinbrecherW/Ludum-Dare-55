@@ -165,8 +165,10 @@ public class GameBehavior : MonoBehaviour
                         Quaternion.Euler(15, -16, 0)
                     );
 
+                    _as.Stop();
                     _as.pitch = 1;
                     _as.time = 0;
+                    _as.loop = false;
                     _as.PlayOneShot(_transition);
                     CutieBehavior.Instance.StartFinalJudgement();
 

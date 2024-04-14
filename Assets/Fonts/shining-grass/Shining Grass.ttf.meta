@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: efd8bddf8b1164556b348a5eaf8d96b6
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Shining Grass
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c0fce7e3e59644762acda389a8ac6d6f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

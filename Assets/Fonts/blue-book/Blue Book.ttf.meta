@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: d6b048fd1c4a3475b87113ac89ce3caa
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - 'Blue Book '
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 932e361f440c94686bab62f77a704a01, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

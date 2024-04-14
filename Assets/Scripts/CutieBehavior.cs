@@ -142,6 +142,10 @@ public class CutieBehavior : MonoBehaviour
 
     public void MakeHighlightedJurorDisappear()
     {
+        AS.pitch = HighlightedJuror.JurorData.VoicePitch;
+        AS.PlayOneShot(DisappearClip);
+
+        RemoveHighlighted = RemoveHighlightedCutie();
         StartCoroutine(RemoveHighlighted);
     }
 
@@ -161,9 +165,6 @@ public class CutieBehavior : MonoBehaviour
                 Cuties[rng],
                 JurorSeats[i]
             ).GetComponent<JurorBehavior>());
-
-            AS.pitch = _currentCuties[i].JurorData.VoicePitch;
-            AS.PlayOneShot(HelloClip);
 
             Cuties.RemoveAt(rng);
 

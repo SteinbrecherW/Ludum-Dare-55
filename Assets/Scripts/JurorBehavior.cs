@@ -36,8 +36,6 @@ public class JurorBehavior : MonoBehaviour
             transform.position.z - 5
         );
 
-        _disappearCoroutine = Disappear();
-
         _anim = GetComponent<Animator>();
         MakeAppear();
     }
@@ -51,6 +49,7 @@ public class JurorBehavior : MonoBehaviour
     {
         CutieBehavior.Instance.HighlightedJuror = null;
 
+        _disappearCoroutine = Disappear();
         StartCoroutine(_disappearCoroutine);
     }
 
@@ -329,9 +328,6 @@ public class JurorBehavior : MonoBehaviour
         _anim = GetComponent<Animator>();
         _anim.Play("Base Layer.MakeDisappear", 0, 0);
         GetComponent<BoxCollider>().enabled = false;
-
-        CutieBehavior.Instance.AS.pitch = JurorData.VoicePitch;
-        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.DisappearClip);
 
         yield return new WaitForSeconds(0.66f);
     }

@@ -150,7 +150,7 @@ RectTransform:
   m_GameObject: {fileID: 36672489}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 34, y: 34, z: 34}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1080534690}
@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -116.7, y: 122.6}
-  m_SizeDelta: {x: 13.9, y: 2.4}
+  m_AnchoredPosition: {x: -124.1, y: 129.9}
+  m_SizeDelta: {x: 14, y: 2.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &36672491
 MonoBehaviour:
@@ -183,8 +183,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: They Won't Stop Talking About Their Favorite TV Show
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dbcf99c87e72d4fb3a41b7064efdff50, type: 2}
+  m_sharedMaterial: {fileID: 9147434153681681977, guid: dbcf99c87e72d4fb3a41b7064efdff50, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2284,8 +2284,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d53276ad9de1d446985a3f4b6f1df6cd, type: 2}
+  m_sharedMaterial: {fileID: 3675391088464558061, guid: d53276ad9de1d446985a3f4b6f1df6cd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2442,8 +2442,8 @@ MonoBehaviour:
     juror's answers won't be of any use to your decision making.
   - After two rounds of questioning have passed, the trial will take place. A score
     will be calculated from the jurors' opinions of your client.
-  - If the jury mostly agrees with your client's opinions, they'll declare him innocent
-    and you win! Otherwise, you'll lose. Shame on you.
+  - If the jury mostly agrees with your client's opinions, they'll declare him innocent!
+    Otherwise, you'll lose. Shame on you.
   _rulesImages:
   - {fileID: 21300000, guid: bf1eb19782c754b4eba351d4a8a0b285, type: 3}
   - {fileID: 21300000, guid: 663049a9c3c3d4b9ca685da66b6f4221, type: 3}
@@ -6737,8 +6737,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Maybe this factor would be good to consider
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3193981941f7748438e6794feb3a8ab3, type: 2}
+  m_sharedMaterial: {fileID: 383498699611172750, guid: 3193981941f7748438e6794feb3a8ab3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8095,7 +8095,7 @@ RectTransform:
   m_GameObject: {fileID: 1269076078}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 65, y: 65, z: 65}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1080534690}
@@ -8128,8 +8128,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: The Big Gazeebo
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4db17bbecb454462e9ea3d542c9252aa, type: 2}
+  m_sharedMaterial: {fileID: -8421782946670939740, guid: 4db17bbecb454462e9ea3d542c9252aa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10587,7 +10587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1656175479
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10979,7 +10979,7 @@ Transform:
   m_GameObject: {fileID: 1691673746}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 50, z: 100}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1354095356}
@@ -11026,7 +11026,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6db868a84cf904dd2abcf16998404a1e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd851096d5fe24a809d311402f76daa9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12528,7 +12528,7 @@ MonoBehaviour:
   - {fileID: 1921753805}
   - {fileID: 182485236}
   _opinionWeights: 0100000001000000010000000000000000000000ffffffffffffffffffffffff
-  AS: {fileID: 0}
+  AS: {fileID: 2012873781}
   HelloClip: {fileID: 8300000, guid: 13909703f7bfc441589471760b53f4a0, type: 3}
   YesClip: {fileID: 8300000, guid: 38bf3fb9655e2472182df253749d7e5a, type: 3}
   MehClip: {fileID: 8300000, guid: 712c9355326d0479398359fd1cac1717, type: 3}
@@ -12558,9 +12558,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -12568,23 +12568,50 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      time: 0.0010177493
+      value: 1.0049782
+      inSlope: -2.5009959
+      outSlope: -2.5009959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.06718831
+      value: 0.9931153
+      inSlope: -0.23516998
+      outSlope: -0.23516998
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      time: 0.69006956
+      value: 0.7825775
+      inSlope: -0.62524897
+      outSlope: -0.62524897
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8742035
+      value: 0.56300354
+      inSlope: -0.15631224
+      outSlope: -0.15631224
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.24434817
+      inSlope: -0.10003988
+      outSlope: -0.10003988
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
