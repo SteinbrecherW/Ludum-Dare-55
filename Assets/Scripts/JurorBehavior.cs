@@ -126,7 +126,7 @@ public class JurorBehavior : MonoBehaviour
                     if (AgeOpinion < 0)
                     {
                         GameBehavior.Instance.DialogueText.text = JurorData.AgeOpinionNegative;
-                        GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.NoClip);
                     }
                     else if (AgeOpinion == 0)
                     {
@@ -153,7 +153,7 @@ public class JurorBehavior : MonoBehaviour
                     if (ColorOpinion < 0)
                     {
                         GameBehavior.Instance.DialogueText.text = JurorData.ColorOpinionNegative;
-                        GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.NoClip);
                     }
                     else if (ColorOpinion == 0)
                     {
@@ -180,7 +180,7 @@ public class JurorBehavior : MonoBehaviour
                     if (CandyOpinion < 0)
                     {
                         GameBehavior.Instance.DialogueText.text = JurorData.CandyOpinionNegative;
-                        GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.NoClip);
                     }
                     else if (CandyOpinion == 0)
                     {
@@ -208,7 +208,7 @@ public class JurorBehavior : MonoBehaviour
                     if (StarSignOpinion < 0)
                     {
                         GameBehavior.Instance.DialogueText.text = JurorData.StarSignOpinionNegative;
-                        GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.NoClip);
                     }
 
                     else if (StarSignOpinion == 0)
@@ -237,7 +237,7 @@ public class JurorBehavior : MonoBehaviour
                     if (SocialMediaOpinion < 0)
                     {
                         GameBehavior.Instance.DialogueText.text = JurorData.SocialMediaOpinionNegative;
-                        GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.NoClip);
                     }
 
                     else if (SocialMediaOpinion == 0)
@@ -266,7 +266,7 @@ public class JurorBehavior : MonoBehaviour
                     if (TVOpinion < 0)
                     {
                         GameBehavior.Instance.DialogueText.text = JurorData.TVOpinionNegative;
-                        GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.NoClip);
                     }
 
                     else if (TVOpinion == 0)
@@ -295,7 +295,7 @@ public class JurorBehavior : MonoBehaviour
                     if (PoliticsOpinion < 0)
                     {
                         GameBehavior.Instance.DialogueText.text = JurorData.PoliticalOpinionNegative;
-                        GameBehavior.Instance.DialogueText.text = JurorData.NameOpinionNegative;
+                        CutieBehavior.Instance.AS.PlayOneShot(CutieBehavior.Instance.NoClip);
                     }
 
                     else if (PoliticsOpinion == 0)
