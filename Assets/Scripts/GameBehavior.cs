@@ -139,11 +139,8 @@ public class GameBehavior : MonoBehaviour
                 case GameState.PostTransition:
 
                     _as.Stop();
-                    _as.loop = true;
-                    _as.pitch = -1f;
-                    _as.time = 4f;
-                    _as.clip = _transition;
-                    _as.Play();
+                    _as.clip = _revTransition;
+                    _as.PlayOneShot(_revTransition);
                     CutieBehavior.Instance.RemoveJurors();
 
                     NameText.text = "Judge";
@@ -259,6 +256,7 @@ public class GameBehavior : MonoBehaviour
     [SerializeField] AudioClip _gameLoop;
     [SerializeField] AudioClip _endLoop;
     [SerializeField] AudioClip _transition;
+    [SerializeField] AudioClip _revTransition;
     [SerializeField] AudioClip _swell;
     [SerializeField] AudioClip _win;
     [SerializeField] AudioClip _lose;

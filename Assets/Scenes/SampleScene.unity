@@ -2485,6 +2485,7 @@ MonoBehaviour:
   _gameLoop: {fileID: 8300000, guid: 44ce7d90c83b647679880ffd79c4b4cb, type: 3}
   _endLoop: {fileID: 8300000, guid: 5c78e18b3aba14a85977d134862f858e, type: 3}
   _transition: {fileID: 8300000, guid: c977b464b7eb04af182df0fc6c5b4de8, type: 3}
+  _revTransition: {fileID: 8300000, guid: d8b5da0a3357149dbbc00971517ffc87, type: 3}
   _swell: {fileID: 8300000, guid: 69879b1a3da1040cba6285ab5a769b3b, type: 3}
   _win: {fileID: 8300000, guid: f49363bb9aaf84fd59c18439800a3020, type: 3}
   _lose: {fileID: 8300000, guid: 89d24d06f84a54e96b822dc91ce70965, type: 3}
