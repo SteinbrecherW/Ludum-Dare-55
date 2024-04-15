@@ -78,7 +78,7 @@ public class GameBehavior : MonoBehaviour
                     CutieBehavior.Instance.InstantiateJurors();
 
                     NameText.text = "Judge";
-                    DialogueText.text = "SUMMON THE JURY!";
+                    DialogueText.text = "SUMMON THE NEXT POTENTIAL JURORS!";
                     _dialogueBox.SetActive(true);
 
                     if (_questionUI.activeSelf == true)
@@ -122,6 +122,9 @@ public class GameBehavior : MonoBehaviour
                     break;
 
                 case GameState.Focused:
+
+                    if (_pauseMenu.activeSelf == true)
+                        _pauseMenu.SetActive(false);
 
                     if (_dialogueBox.activeSelf == false)
                         _dialogueBox.SetActive(true);
@@ -336,15 +339,25 @@ public class GameBehavior : MonoBehaviour
 
                 break;
 
+            case GameState.Focused:
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                    CurrentState = GameState.Paused;
+
+                break;
+
             case GameState.Paused:
 
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    if(_dialogueBox.activeSelf)
+                    if(_questionUI.activeSelf)
                         CurrentState = GameState.Focused;
                     else
                         CurrentState = GameState.Running;
                 }
+
+                if (Input.GetKeyDown(KeyCode.R))
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
                 break;
 
